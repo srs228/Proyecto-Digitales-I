@@ -12,7 +12,7 @@ wire y;
 
 always @(a,b)
     begin
-        assign w = ~(~a & b) & (a | b)
-        assign z = ~w
+        assign w = (~(~a & b)) & (a | b);
+        assign z = ~w;
     end
 endmodule // comparador
