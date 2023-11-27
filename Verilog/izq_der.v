@@ -12,11 +12,11 @@ wire x;
 wire y;
 
 
-//Ejecucion en paralelo
-    assign x = ~wordA & wordB;
-    assign y = wordA ^ wordB;
+//Celda Inicial (Tambien Tipica)
+    assign x = ~(|(wordA)) & |(wordB);
+    assign y = |(wordA ^ wordB);
 
-//Ejecucion en serie
+//Celda Final
     assign w = ~x & y;
     assign z = ~w;
 

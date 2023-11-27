@@ -1,0 +1,43 @@
+$date
+	Sun Nov 26 21:31:07 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module izq_der_tb $end
+$var wire 1 ! z $end
+$var wire 1 " w $end
+$var reg 8 # a [7:0] $end
+$var reg 8 $ b [7:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 $
+b0 #
+0"
+1!
+$end
+#10000
+0!
+1"
+b1 $
+b1101110 #
+#20000
+b1101111 #
+#30000
+1!
+0"
+b0 #
+#40000
+0!
+1"
+b0 $
+b1011 #
+#50000
+b10000001 $
+b11001111 #
+#60000
