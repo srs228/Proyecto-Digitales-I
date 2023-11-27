@@ -2,17 +2,22 @@
 
 //Comparador
 module Comparador
-(
-    input wire [7:0] wordA, wordB,
-    output wire w, z,
+#(parameter N = 8 //parametro N bits entrada
+)(
+    input wire [N-1:0] wordA, wordB,
+    output wire w, z
 );
 
 wire x;
 wire y;
 
-always @(a,b)
-    begin
-        assign w = (~(~a & b)) & (a ^ b);
-        assign z = ~w;
-    end
-endmodule // comparador
+
+//Ejecucion en paralelo
+    assign x = ~wordA & wordB;
+    assign y = wordA ^ wordB;
+
+//Ejecucion en serie
+    assign w = ~x & y;
+    assign z = ~w;
+
+endmodule // Comparador
