@@ -6,7 +6,6 @@ module izq_der_tb;
 
     reg [7:0] a, b;
     wire w, z;
-    //Comparador #(.N(3))(.wordA(a), .wordB(b));
 
     localparam period = 10;
 
