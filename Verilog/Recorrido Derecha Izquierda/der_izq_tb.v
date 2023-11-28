@@ -1,65 +1,75 @@
-`timescale 1ns/1ps
+// Testbench Recorrido Derecha Izquierda
+
+`timescale 1 ns / 1 ps
 
 module der_izq_tb;
 
-
-    // Definición de señales de entrada
-    reg [7:0] A, B;
-
-
-    // Definición de señales de salida
-    reg x_out, X, Z;
+    reg [2:0] a, b;
+    wire z;
 
     localparam period = 10;
 
-    // Instanciación del módulo principal
-    principal uut (.A(A), .B(B), .Z(Z));
+    //Dispositivo en prueba
+    Comparador DUT (.wordA(a), .wordB(b), .z(z));
 
-  // Instanciación del primer módulo X1
-  X1 x1_inst (.A(A), .B(B), .x(x_out));
+    initial
+        begin
+            $dumpfile("der_izq_tb.vcd");
+            $dumpvars(1, der_izq_tb);
 
-  // Instanciación del segundo módulo X2
-  X2 x2_inst (.A(A), .B(B), .x(x_out), .X(X));
+            a = 000;
+            b = 000;
+            #period;
 
-  // Inicialización de señales de entrada
-  initial 
-  
-    begin
-        $dumpfile("der_izq_tb.vcd");
-        $dumpvars(1, der_izq_tb);
+            if(z != 1)
+            begin
+                $display("Test failed for A0 = B0");
+            end
 
+            a = 110;
+            b = 001;
+            #period
 
-    //Aplicar patrones de entrada y observar las salidas
-        A = 8'b00000000;
-        B = 8'b00000000;
-        #period;
+            if(z != 0)
+            begin
+                $display("Test failed for A1 > B1");
+            end
 
-        A = 8'b11011000;
-        B = 8'b00100000;
-        #period;
+            a = 111;
+            b = 001;
+            #period
 
-        A = 8'b11100000;
-        B = 8'b00100000;
-        #period;
+            if(z != 0)
+            begin
+                $display("Test failed for A2 > B2");
+            end
+            
+            a = 000;
+            b = 001;
+            #period
 
-        A = 8'b00000000;
-        B = 8'b00100000;
-        #period;
+            if(z != 1)
+            begin
+                $display("Test failed for A3 < B3");
+            end
 
-        A = 8'b01100000;
-        B = 8'b00000000;
-        #period;
+            a = 1011;
+            b = 1000;
+            #period
 
-        A = 8'b11100111;
-        B = 8'b10000001;
-        #period;
+            if(z != 0)
+            begin
+                $display("Test failed for A4 > B4");
+            end
 
+            a = 11100111;
+            b = 10000001;
+            #period
 
+            if(z != 0)
+            begin
+                $display("Test failed for A5 > B5");
+            end
 
-    // Puedes continuar con más patrones de entrada según sea necesario
-
-    // Finalizar la simulación
-  end
-
-
-endmodule
+        end
+endmodule // der_izq_tb
