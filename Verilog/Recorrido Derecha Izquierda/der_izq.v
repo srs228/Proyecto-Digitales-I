@@ -29,6 +29,9 @@ module X1 (
 endmodule
 
 
+
+
+
 //Módulo para la celda típica, la salida de la etapa anterior es entrada de esta.
 
 module X2 (
@@ -38,10 +41,9 @@ module X2 (
   output reg X
 );
 
-  always @* begin
-    // Implementación de la función lógica que describe el Proximo Estado, la Explicacion de esta ecuación viene en el reporte.
-    X = (A & ~B) | (x & ~B) | (x & A);
-  end
+
+// Implementación de la función lógica que describe el Proximo Estado, la Explicacion de esta ecuación viene en el reporte.
+    assign X = (A & ~B) | (x & ~B) | (x & A);
 
 endmodule
 
