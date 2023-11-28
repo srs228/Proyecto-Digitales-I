@@ -1,4 +1,13 @@
+/*  Proyecto Final
+    Circuitos Digitales I
+    ---------------------
+    Eduard Alonso Corrales
+    Sebastian Rojas
+    Kevin Vasquez
+*/
+
 //Recorrido Izquierda - Derecha
+//Conductual (Behavioral)
 
 //Comparador
 module Comparador
@@ -8,6 +17,7 @@ module Comparador
     output wire w, z
 );
 
+//Cables internos para comunicacion entre celdas
 wire x;
 wire y;
 
