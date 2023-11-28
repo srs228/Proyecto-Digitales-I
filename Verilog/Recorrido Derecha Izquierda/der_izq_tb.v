@@ -4,7 +4,7 @@
 
 module der_izq_tb;
 
-    reg [2:0] a, b;
+    reg [7:0] a, b;
     wire z;
 
     localparam period = 10;
