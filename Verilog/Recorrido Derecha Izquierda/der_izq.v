@@ -1,3 +1,15 @@
+/*  Proyecto Final
+    Circuitos Digitales I
+    ---------------------
+    Eduard Alonso Corrales
+    Sebastian Rojas
+    Kevin Vasquez
+*/
+
+//Recorrido Izquierda - Derecha
+//Estructural
+
+//Comparador
 module Comparador
 #(
     parameter N = 8 // Parámetro N bits entrada
