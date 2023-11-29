@@ -40,6 +40,11 @@ module Comparador
     or(x1, |x, |w1, |w2);
 
     // Celda final
+    /*
+        A pesar de que esta parte final de la implementacion es 
+        conductual, se uso de esta manera para indicar una condicion
+        de parada al recorrido
+    */
     assign z = ~((x1 == 0) && (wordA > wordB));
 
 endmodule // Comparador

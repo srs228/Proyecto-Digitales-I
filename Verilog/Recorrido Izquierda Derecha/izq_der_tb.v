@@ -17,6 +17,9 @@ module izq_der_tb;
             $dumpfile("izq_der_tb.vcd");
             $dumpvars(1, izq_der_tb);
 
+            //En caso de no resolver con lo esperado, se imprime
+            //error en la terminal, en las combinaciones "erroneas"
+
             a = 000;
             b = 000;
             #period;
