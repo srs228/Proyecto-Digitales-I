@@ -10,7 +10,7 @@ module izq_der_tb;
     localparam period = 10;
 
     //Dispositivo en prueba
-    Comparador DUT (.wordA(a), .wordB(b), .w(w), .z(z));
+    Comparador DUT (.A(a), .B(b), .Z(z));
 
     initial
         begin
@@ -24,7 +24,7 @@ module izq_der_tb;
             b = 000;
             #period;
 
-            if((w != 0) || (z != 1))
+            if(z != 1)
             begin
                 $display("Test failed for A0 = B0");
             end
@@ -33,7 +33,7 @@ module izq_der_tb;
             b = 001;
             #period
 
-            if((w != 1) || (z != 0))
+            if(z != 0)
             begin
                 $display("Test failed for A1 > B1");
             end
@@ -42,7 +42,7 @@ module izq_der_tb;
             b = 001;
             #period
 
-            if((w != 1) || (z != 0))
+            if(z != 0)
             begin
                 $display("Test failed for A2 > B2");
             end
@@ -51,7 +51,7 @@ module izq_der_tb;
             b = 001;
             #period
 
-            if((w != 0) || (z != 1))
+            if(z != 1)
             begin
                 $display("Test failed for A3 < B3");
             end
@@ -60,7 +60,7 @@ module izq_der_tb;
             b = 1001;
             #period
 
-            if((w != 1) || (z != 0))
+            if(z != 0)
             begin
                 $display("Test failed for A4 > B4");
             end
@@ -69,7 +69,7 @@ module izq_der_tb;
             b = 10000001;
             #period
 
-            if((w != 1) || (z != 0))
+            if(z != 0)
             begin
                 $display("Test failed for A5 > B5");
             end

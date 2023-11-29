@@ -16,28 +16,25 @@ cual complica el proceso
 //-------------------------------------------------------------------
 
 //Comparador
-module Comparador
-#(parameter N = 8 //parametro N bits entrada
-)(
-    input wire [N-1:0] wordA, wordB,
-    output wire w, z
+module Comparador #(parameter N = 8) (
+  input wire [N-1:0] A, B,
+  output wire Z
 );
 
-//Cables internos para comunicacion entre celdas
-wire x, x1;
-wire y, y1;
+  // Celda Inicial
+  wire [N-1:0] X, Y;
+  assign X = ~ (A & B);
+  assign Y = (A & ~B) | ~ (A & B);
 
+  // Celda Típica
+  wire x, y;
+  assign x = ~ (|X);
+  assign y = |Y;
+  wire [N-1:0] X1, Y1;
+  assign X1 = x | ~ (y & ~ (A & B));
+  assign Y1 = x | ~ (y & (A & ~B)) | ~ (y & ~ (A & B)) | ~ (x & y & ~A) | ~ (x & y & B);
 
-//Celda Inicial
-    assign x = ~(|(wordA)) & |(wordB);
-    assign y = |(wordA ^ wordB);
-
-//Celda Tipica
-    assign x1 = (|x)|(~|y & ~|wordA & |wordB);
-    assign y1 = (|x) | (|y) | (|(wordA ^ wordB));
-
-//Celda Final
-    assign w = ~(|x1) & |y1;
-    assign z = ~|w;
+  // Celda Final
+  assign Z = (B >= A) | ~(|X1 | Y1);
 
 endmodule // Comparador
