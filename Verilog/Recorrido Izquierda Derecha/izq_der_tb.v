@@ -53,8 +53,8 @@ module izq_der_tb;
                 $display("Test failed for A3 < B3");
             end
 
-            a = 1011;
-            b = 1000;
+            a = 1010;
+            b = 1001;
             #period
 
             if((w != 1) || (z != 0))

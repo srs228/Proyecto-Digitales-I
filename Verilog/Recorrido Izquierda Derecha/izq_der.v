@@ -8,6 +8,12 @@
 
 //Recorrido Izquierda - Derecha
 //Conductual (Behavioral)
+/*
+Se decidio usar un metodo conductual para esta seccion, debido a
+que al poseer mas estados, se requieren mas conectivas y cables, lo
+cual complica el proceso
+*/
+//-------------------------------------------------------------------
 
 //Comparador
 module Comparador
@@ -27,7 +33,7 @@ wire y;
     assign y = |(wordA ^ wordB);
 
 //Celda Final
-    assign w = ~x & y;
+    assign w = ~(|x) & |y;
     assign z = ~w;
 
 endmodule // Comparador
