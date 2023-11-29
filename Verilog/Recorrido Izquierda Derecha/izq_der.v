@@ -24,16 +24,20 @@ module Comparador
 );
 
 //Cables internos para comunicacion entre celdas
-wire x;
-wire y;
+wire x, x1;
+wire y, y1;
 
 
-//Celda Inicial (Tambien Tipica)
+//Celda Inicial
     assign x = ~(|(wordA)) & |(wordB);
     assign y = |(wordA ^ wordB);
 
+//Celda Tipica
+    assign x1 = (|x)|(~|y & ~|wordA & |wordB);
+    assign y1 = (|x) | (|y) | (|(wordA ^ wordB));
+
 //Celda Final
-    assign w = ~(|x) & |y;
-    assign z = ~w;
+    assign w = ~(|x1) & |y1;
+    assign z = ~|w;
 
 endmodule // Comparador
