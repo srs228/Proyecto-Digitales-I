@@ -8,6 +8,11 @@
 
 //Recorrido Izquierda - Derecha
 //Estructural
+/*
+Se decidio usar un metodo estructural para esta seccion, debido a
+que al poseer menos estados, se requieren menos conectivas y cables
+*/
+//-------------------------------------------------------------------
 
 //Comparador
 module Comparador
